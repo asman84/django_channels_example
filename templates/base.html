@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Hello websocket</h1>
+
+
+
+</body>
+<script>
+      var loc = window.location;
+    var wsStart = 'ws://';
+    if (loc.protocol == 'https:') {
+        wsStart = 'wss://';
+    }
+    console.log(loc.pathname)
+
+    var endpoint = wsStart + loc.host + "/post_notifications/";
+    var socket = new WebSocket(endpoint);
+
+    socket.onmessage = function (e) {
+        const data = JSON.parse(e.data);
+        console.log("socket onmessage", data);
+
+
+    }
+    socket.onopen = function (e) {
+        console.log("socket onopen", e);
+    }
+    socket.onerror = function (e) {
+        console.log("socket onerror", e);
+    }
+    socket.onclose = function (e) {
+        console.log("socket onclose", e);
+    }
+
+</script>
+</html>
