@@ -78,14 +78,12 @@ WSGI_APPLICATION = 'upwork_nyt.wsgi.application'
 ASGI_APPLICATION = 'upwork_nyt.asgi.application'
 
 CHANNEL_LAYERS = {
-    'default': {
-        'BACKEND': 'channels_redis.core.RedisChannelLayer',
-        # "ROUTING": "django_nyt.routing.channel_routing",
-        'CONFIG': {
-            "hosts": [('127.0.0.1', 6379)],
-        },
+    "default": {
+        # 'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        "ROUTING": "django_nyt.routing.channel_routing",
     },
 }
+
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
@@ -129,5 +127,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
