@@ -79,8 +79,8 @@ ASGI_APPLICATION = 'upwork_nyt.asgi.application'
 
 CHANNEL_LAYERS = {
     "default": {
-        # 'BACKEND': 'channels_redis.core.RedisChannelLayer',
-        "ROUTING": "django_nyt.routing.channel_routing",
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        # "ROUTING": "django_nyt.routing.channel_routing",
     },
 }
 

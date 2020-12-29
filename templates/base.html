@@ -18,32 +18,43 @@
 
 
 </body>
-<script>
-    var loc = window.location;
-    var wsStart = 'ws://';
-    if (loc.protocol == 'https:') {
-        wsStart = 'wss://';
-    }
-    console.log(loc.pathname)
+<h2>Notifications:</h2>
+<ul>
+  <li class="notification-before-list">Notifications (<span class="badge notification-cnt">0</span>):</li>
+{#  <li class="notifications-empty"><a href="#"><em>{% trans "No notifications" %}</em></a></li>#}
+</ul>
 
-    var endpoint = wsStart + loc.host + "/post_notifications/";
-    var socket = new WebSocket(endpoint);
+<a href="#" onclick="nyt_mark_read()">
+  <i class="icon-check"></i>
+{#  {% trans "Clear notifications list" %}#}
+</a>
+{#<script>#}
+{#    var loc = window.location;#}
+{#    var wsStart = 'ws://';#}
+{#    if (loc.protocol == 'https:') {#}
+{#        wsStart = 'wss://';#}
+{#    }#}
+{#    console.log(loc.pathname)#}
+{##}
+{#    var endpoint = wsStart + loc.host + "/post_notifications/";#}
+{#    var socket = new WebSocket(endpoint);#}
+{##}
+{#    socket.onmessage = function (e) {#}
+{#        const data = JSON.parse(e.data);#}
+{#        console.log("socket onmessage", data);#}
+{##}
+{##}
+{#    }#}
+{#    socket.onopen = function (e) {#}
+{#        console.log("socket onopen", e);#}
+{#    }#}
+{#    socket.onerror = function (e) {#}
+{#        console.log("socket onerror", e);#}
+{#    }#}
+{#    socket.onclose = function (e) {#}
+{#        console.log("socket onclose", e);#}
+{#    }#}
+{##}
+{#</script>#}
 
-    socket.onmessage = function (e) {
-        const data = JSON.parse(e.data);
-        console.log("socket onmessage", data);
-
-
-    }
-    socket.onopen = function (e) {
-        console.log("socket onopen", e);
-    }
-    socket.onerror = function (e) {
-        console.log("socket onerror", e);
-    }
-    socket.onclose = function (e) {
-        console.log("socket onclose", e);
-    }
-
-</script>
 </html>
